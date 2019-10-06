@@ -1,10 +1,10 @@
 <?php
 
-define('BASE_URL', 'http://localhost/Archidep-ExerciceTest1/');
-define('DB_USER', 'root');
-define('DB_PASS', 'root');
+define('BASE_URL', '/');
+define('DB_USER', 'todolist');
+define('DB_PASS', 'chAngeMeN0w!');
 define('DB_NAME', 'todolist');
-define('DB_HOST', 'localhost');
+define('DB_HOST', '127.0.0.1');
 define('DB_PORT', '3306');
 
 $db = new PDO('mysql:host='.DB_HOST.';port='.DB_PORT.';dbname='.DB_NAME, DB_USER, DB_PASS);
@@ -37,7 +37,7 @@ if (isset($_POST['action'])) {
 
       $id = $_POST['id'];
       if(is_numeric($id)) {
-        $updateQuery = ''; // IMPLEMENT ME
+        $updateQuery = 'update todo set done = !done where id ='.$id; // Fonction de Màj
         if(!$db->query($updateQuery)) {
           die(print_r($db->errorInfo(), true));
         }
